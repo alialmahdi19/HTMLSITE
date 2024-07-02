@@ -10,24 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Node.js
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: '20'
-
       - name: Checkout repository
-        uses: actions/checkout@v4
-        
-      - name: Build
-        run: npm run build 
-        
-      - name: Install Netlify CLI
-        run: npm install netlify-cli -g
-
-      - name: Authenticate with Netlify
-        run: netlify login -a $NETLIFY_AUTH_TOKEN
+        uses: actions/checkout@v2
 
       - name: Deploy to Netlify
-        run: netlify deploy --prod
+        run: |
+          netlify deploy --prod --dir=./
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
