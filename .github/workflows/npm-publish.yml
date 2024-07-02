@@ -13,9 +13,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to Netlify
+      - name: Deploy to Netlify prod
         run: |
           netlify deploy --prod \
             --dir=. \
             --site ${{ secrets.NETLIFY_API_TOKEN }} \
-            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
+            --auth ${{ secrets.NETLIFY_AUTH_TOKEN }} 
