@@ -13,11 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: check dir
-        run: cd 
-
       - name: Deploy to Netlify
         run: |
-          netlify deploy --prod
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify deploy --prod \
+            --dir=. \
+            --auth ${{ secrets.NETLIFY_API_TOKEN }} 
